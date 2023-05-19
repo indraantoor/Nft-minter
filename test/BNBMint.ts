@@ -4,7 +4,7 @@ import { ethers } from 'hardhat';
 describe('MY NFT', function () {
   it('Should mint and transer an NFT To Someone', async function () {
     const BNBMint = await ethers.getContractFactory('BNBMint');
-    const bnbmint: any = await BNBMint.deploy();
+    const bnbmint = await BNBMint.deploy();
     await bnbmint.deployed();
 
     const recipient = '';

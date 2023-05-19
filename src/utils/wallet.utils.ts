@@ -16,9 +16,7 @@ export const handleWalletConnection = async (
 
   try {
     const { ethereum } = window;
-    const provider = new ethers.providers.JsonRpcProvider(
-      'https://data-seed-prebsc-1-s1.binance.org:8545'
-    );
+    const provider = new ethers.providers.Web3Provider(ethereum);
 
     const userAccounts: string[] = await ethereum.request({
       method: 'eth_requestAccounts',

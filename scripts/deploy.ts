@@ -1,14 +1,8 @@
-import hre from 'hardhat';
+import { ethers } from 'hardhat';
 
 async function main() {
-  // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  // const unlockTime = currentTimestampInSeconds + 60;
-
-  // const lockedAmount = hre.ethers.utils.parseEther('0.001');
-
-  const BNBMint = await hre.ethers.getContractFactory('BNBMint');
-  const bnbmint: any = await BNBMint.deploy();
-
+  const BNBMint = await ethers.getContractFactory('BNBMint');
+  const bnbmint = await BNBMint.deploy();
   await bnbmint.deployed();
 
   console.log('Deployed to ', bnbmint.address);
