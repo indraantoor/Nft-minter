@@ -2,6 +2,11 @@
   "name": "nft-minter",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=19.8.1",
+    "yarn": "please-use-npm",
+    "npm": ">=9.6.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
