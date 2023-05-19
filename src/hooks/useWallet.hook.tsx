@@ -11,6 +11,7 @@ export interface IWalletState {
   provider: BrowserProvider | null;
   isLoggedIn: boolean;
   allAddresses: string[];
+  balance: string;
 }
 
 export const useWallet = () => {
@@ -21,6 +22,7 @@ export const useWallet = () => {
     provider: null,
     isLoggedIn: false,
     allAddresses: [],
+    balance: '',
   };
 
   const [walletState, setWalletState] = useState<IWalletState>(initialState);

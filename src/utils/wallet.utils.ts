@@ -28,6 +28,9 @@ export const handleWalletConnection = async (
     if (hasAccounts) {
       const signer = await provider.getSigner();
       const currentChain = Number(await (await provider.getNetwork()).chainId);
+      const address = userAccounts[0];
+      const balance: bigint = await provider.getBalance(address);
+      const formattedBalance = ethers.formatEther(balance);
 
       const updatedWalletState: IWalletState = {
         ...previousState,
@@ -37,6 +40,7 @@ export const handleWalletConnection = async (
         provider,
         isLoggedIn: true,
         allAddresses: userAccounts,
+        balance: formattedBalance,
       };
 
       LocalStorageUtils.saveToLocalStorage(
