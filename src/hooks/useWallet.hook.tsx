@@ -1,5 +1,7 @@
+'use-client';
+
 import { useCallback, useEffect, useState } from 'react';
-import { BrowserProvider, JsonRpcSigner } from 'ethers';
+// import { BrowserProvider, JsonRpcSigner } from 'ethers';
 import { handleWalletConnection } from '../utils/wallet.utils';
 import LocalStorageUtils from '../utils/storage/localStorage/localStorage.utls';
 import LocalStorageConstants from '../utils/storage/localStorage/localStorageConstants';
@@ -7,8 +9,8 @@ import LocalStorageConstants from '../utils/storage/localStorage/localStorageCon
 export interface IWalletState {
   address: string;
   currentChain: number | null;
-  signer: JsonRpcSigner | null;
-  provider: BrowserProvider | null;
+  signer: any | null;
+  provider: any | null;
   isLoggedIn: boolean;
   allAddresses: string[];
   balance: string;
@@ -32,8 +34,11 @@ export const useWallet = () => {
       isLoggedIn = walletState.isLoggedIn,
       walletStateParam = walletState
     ) => {
+      console.log('extecured', { walletState });
       const walletResponse: IWalletState | boolean | undefined =
         await handleWalletConnection(isLoggedIn, walletStateParam);
+      console.log('CALLED Bro', { walletResponse });
+
       if (walletResponse) {
         setWalletState(walletResponse);
       }

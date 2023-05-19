@@ -16,12 +16,13 @@ export const handleWalletConnection = async (
 
   try {
     const { ethereum } = window;
-    const provider = new ethers.BrowserProvider(ethereum);
-
-    const userAccounts: string[] = await provider.send(
-      'eth_requestAccounts',
-      []
+    const provider = new ethers.providers.JsonRpcProvider(
+      'https://data-seed-prebsc-1-s1.binance.org:8545'
     );
+
+    const userAccounts: string[] = await ethereum.request({
+      method: 'eth_requestAccounts',
+    });
 
     const hasAccounts = userAccounts.length > 0;
 
@@ -29,8 +30,8 @@ export const handleWalletConnection = async (
       const signer = await provider.getSigner();
       const currentChain = Number(await (await provider.getNetwork()).chainId);
       const address = userAccounts[0];
-      const balance: bigint = await provider.getBalance(address);
-      const formattedBalance = ethers.formatEther(balance);
+      const balance = await provider.getBalance(address);
+      const formattedBalance = ethers.utils.formatEther(balance);
 
       const updatedWalletState: IWalletState = {
         ...previousState,
@@ -50,6 +51,7 @@ export const handleWalletConnection = async (
       return updatedWalletState;
     }
   } catch (err) {
+    console.log(err);
     return false;
   }
 };

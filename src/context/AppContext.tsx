@@ -1,3 +1,5 @@
+'use-client';
+
 import { createContext, ReactNode, useContext } from 'react';
 import { IWalletState, useWallet } from '../hooks/useWallet.hook';
 
