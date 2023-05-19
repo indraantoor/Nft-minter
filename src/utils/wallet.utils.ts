@@ -46,6 +46,6 @@ export const handleWalletConnection = async (
       return updatedWalletState;
     }
   } catch (err) {
-    return err;
+    return false;
   }
 };

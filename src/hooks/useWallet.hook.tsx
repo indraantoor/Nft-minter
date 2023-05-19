@@ -25,7 +25,19 @@ export const useWallet = () => {
 
   const [walletState, setWalletState] = useState<IWalletState>(initialState);
 
-  const connectWallet = useCallback(handleWalletConnection, [walletState]);
+  const connectWallet = useCallback(
+    async (
+      isLoggedIn = walletState.isLoggedIn,
+      walletStateParam = walletState
+    ) => {
+      const walletResponse: IWalletState | boolean | undefined =
+        await handleWalletConnection(isLoggedIn, walletStateParam);
+      if (walletResponse) {
+        setWalletState(walletResponse);
+      }
+    },
+    [walletState]
+  );
 
   const logout = () => {
     setWalletState(initialState);
