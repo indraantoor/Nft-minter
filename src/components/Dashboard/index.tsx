@@ -8,9 +8,9 @@ import Navbar from '../Navbar';
 
 const Dashboard = () => {
   const { state } = useAppContext() as IAppContext;
-  const { address, balance } = state;
+  const { address, balance, isLoggedIn } = state;
 
-  return (
+  return isLoggedIn ? (
     <>
       <div className="text-center">
         <div className="mt-6">
@@ -25,6 +25,13 @@ const Dashboard = () => {
       <MintNftForm />
       <MintedNfts />
     </>
+  ) : (
+    <div className="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 flex flex-col gap-5 mt-10 m-10 text-center">
+      <h2 className="text-3xl font-[600] mt-5">Hi! Welcome to NFT Minter</h2>
+      <p className="text-xl font-[300] mt-5">
+        Kindly connect your wallet to start minting
+      </p>
+    </div>
   );
 };
 
