@@ -2,6 +2,7 @@ import { useContract } from './useContract.hook';
 import { IAppContext, useAppContext } from '../context/AppContext';
 import { pinJSONToIPFS } from '../utils/pinata.utils';
 import { ethers } from 'ethers';
+import ToastUtils from '../utils/toast/toast.utils';
 
 export interface IMetadata {
   name: string;
@@ -21,23 +22,35 @@ export const useBNBMint = () => {
   const { address } = state;
 
   const getCount = async () => {
-    const count = await contract?.count();
-    const parsedCount = parseInt(count);
-    return parsedCount;
+    try {
+      const count = await contract?.count();
+      const parsedCount = parseInt(count);
+      return parsedCount;
+    } catch {
+      ToastUtils.showErrorToast(
+        'Failed to get count, please try again after some time'
+      );
+      return;
+    }
   };
 
   const getMintedStatus = async (tokenURI: IMetadata) => {
-    const isMinted = await contract?.isContentOwned(tokenURI);
-    return isMinted;
+    try {
+      const isMinted = await contract?.isContentOwned(tokenURI);
+      return isMinted;
+    } catch {
+      ToastUtils.showErrorToast(
+        'Failed to get minted status, please try again after some time'
+      );
+      return;
+    }
   };
 
   const mintNFT = async ({ url, name, description }: IMetadata) => {
     //error handling
     if (url.trim() == '' || name.trim() == '' || description.trim() == '') {
-      return {
-        success: false,
-        status: 'Please make sure all fields are completed before minting.',
-      };
+      ToastUtils.showErrorToast('Please check for missing form values');
+      return;
     }
 
     //make metadata
@@ -49,23 +62,26 @@ export const useBNBMint = () => {
     //make pinata call
     const pinataResponse: any = await pinJSONToIPFS(metadata);
     if (!pinataResponse.success) {
-      return {
-        success: false,
-        status: 'Something went wrong while uploading your tokenURI.',
-      };
+      ToastUtils.showErrorToast(
+        'Something went wrong while uploading your tokenURI.'
+      );
+      return;
     }
 
     const tokenURI = pinataResponse.pinataUrl;
 
-    const result = await contract?.payToMint(address, tokenURI, {
-      value: ethers.utils.parseEther('0.005'),
-    });
-
-    await result.wait();
-
-    getCount();
-
-    return tokenURI;
+    try {
+      const result = await contract?.payToMint(address, tokenURI, {
+        value: ethers.utils.parseEther('0.005'),
+      });
+      await result.wait();
+      getCount();
+      ToastUtils.showSuccessToast('Minted successfully');
+      return tokenURI;
+    } catch {
+      ToastUtils.showErrorToast('Transaction failed');
+      return;
+    }
   };
 
   return { getCount, getMintedStatus, mintNFT };

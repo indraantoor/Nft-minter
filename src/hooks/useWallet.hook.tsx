@@ -50,6 +50,11 @@ export const useWallet = () => {
     );
   };
 
+  const updateWalletState = (walletState: IWalletState) => {
+    setWalletState(walletState);
+    return;
+  };
+
   useEffect(() => {
     if (window == null) return;
 
@@ -80,5 +85,6 @@ export const useWallet = () => {
     connectWallet,
     logout,
     walletState,
+    updateWalletState,
   };
 };

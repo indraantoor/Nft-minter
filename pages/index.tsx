@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import dynamic from 'next/dynamic';
 
 const Dashboard = dynamic(() => import('../src/components/Dashboard'), {
@@ -14,7 +13,7 @@ const Navbar = dynamic(() => import('../src/components/Navbar'), {
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Nft Minter</title>
         <meta name="description" content="Mint Nfts" />
@@ -23,11 +22,9 @@ export default function Home() {
 
       <Navbar />
 
-      <main className={styles.main}>
+      <main>
         <Dashboard />
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

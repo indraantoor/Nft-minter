@@ -4,7 +4,6 @@ import { IAppContext, useAppContext } from '../../context/AppContext';
 import Balance from '../Balance';
 import MintNftForm from '../MintNftForm';
 import MintedNfts from '../MintedNfts';
-import Navbar from '../Navbar';
 
 const Dashboard = () => {
   const { state } = useAppContext() as IAppContext;

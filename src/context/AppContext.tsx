@@ -7,6 +7,7 @@ export interface IAppContext {
   connectWallet: Function;
   logout: Function;
   state: IWalletState;
+  updateWalletState: Function;
 }
 
 interface IAppContextProviderPropsType {
@@ -18,13 +19,14 @@ const AppContext = createContext<IAppContext | null>(null);
 export const AppContextProvider = ({
   children,
 }: IAppContextProviderPropsType) => {
-  const { connectWallet, logout, walletState } = useWallet();
+  const { connectWallet, logout, walletState, updateWalletState } = useWallet();
   return (
     <AppContext.Provider
       value={{
         state: walletState,
         logout,
         connectWallet,
+        updateWalletState,
       }}
     >
       {children}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IToken } from '../../hooks/useBNBMint.hook';
 import { useContract } from '../../hooks/useContract.hook';
 import { IAppContext, useAppContext } from '../../context/AppContext';
+import ToastUtils from '../../utils/toast/toast.utils';
 
 const MintedNfts = () => {
   const [mintedNfts, setMintedNfts] = useState<IToken[]>([]);
@@ -16,23 +17,33 @@ const MintedNfts = () => {
       const balanceFormatted = Number(balance);
       const tokens: IToken[] = [];
       for (let i = 0; i < balanceFormatted; i++) {
-        const tokenId = await contract?.tokenOfOwnerByIndex(address, i);
-        const tokenURI = await contract?.tokenURI(tokenId);
-        tokens.push({ tokenId: Number(tokenId), tokenURI });
+        try {
+          const tokenId = await contract?.tokenOfOwnerByIndex(address, i);
+          const tokenURI = await contract?.tokenURI(tokenId);
+          tokens.push({ tokenId: Number(tokenId), tokenURI });
+        } catch {
+          ToastUtils.showErrorToast('Failed to fetch token information');
+          return;
+        }
       }
 
       for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
-        const metadataRes = await fetch(token.tokenURI.substring(7));
-        const metadata = await metadataRes.json();
-        token.metadata = metadata;
+        try {
+          const metadataRes = await fetch(token.tokenURI.substring(7));
+          const metadata = await metadataRes.json();
+          token.metadata = metadata;
+        } catch {
+          ToastUtils.showErrorToast('Failed to fetch metadata');
+          return;
+        }
       }
 
       setMintedNfts(tokens);
     };
 
     fetchTokens();
-  }, [contract, address]);
+  }, [contract, address, state]);
 
   return (
     <div className="mt-14">

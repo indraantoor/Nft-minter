@@ -11,9 +11,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <a href="#" className="text-white text-lg font-semibold">
-              NFT Minter
-            </a>
+            <h2 className="text-white text-lg font-semibold">NFT Minter</h2>
           </div>
 
           <div className="flex items-center">
