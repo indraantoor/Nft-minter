@@ -2,11 +2,12 @@
 
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import Accounts from '../Accounts/Accounts';
+import Balance from '../Balance';
 import Button from '../Button';
 
 const Dashboard = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
-  const { isLoggedIn, allAddresses, address, balance } = state;
+  const { isLoggedIn, allAddresses, address } = state;
 
   return (
     <>
@@ -14,7 +15,9 @@ const Dashboard = () => {
       <div>Current Address: {address} </div>
       <div>Mint Count:</div>
       <div>Is Minted</div>
-      <div>Balance: {balance ? balance + ' BNB' : ''}</div>
+      <div>
+        <Balance balance={0} />
+      </div>
       {!isLoggedIn ? (
         <Button text="Connect Wallet" onClick={connectWallet} />
       ) : (
