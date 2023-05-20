@@ -1,9 +1,9 @@
-interface IBalance {
+interface IBalancePropsType {
   balance: number | string;
   currency?: string;
 }
 
-const Balance = ({ balance = 0, currency = 'BNB' }: IBalance) => {
+const Balance = ({ balance = 0, currency = 'BNB' }: IBalancePropsType) => {
   return (
     <div>
       <span>Balance: </span>

@@ -1,10 +1,10 @@
-interface IButton {
+interface IButtonPropsType {
   text: string;
   className?: string;
   onClick?: Function;
 }
 
-const Button = ({ text, className, onClick }: IButton) => {
+const Button = ({ text, className, onClick }: IButtonPropsType) => {
   const handleClick = onClick;
   return (
     <button

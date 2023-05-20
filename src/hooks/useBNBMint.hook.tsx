@@ -3,7 +3,7 @@ import { IAppContext, useAppContext } from '../context/AppContext';
 import { pinJSONToIPFS } from '../utils/pinata.utils';
 import { ethers } from 'ethers';
 
-interface IMetadata {
+export interface IMetadata {
   name: string;
   url: string;
   description: string;

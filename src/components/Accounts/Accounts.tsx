@@ -1,10 +1,8 @@
-import React from 'react';
-
-interface IAccounts {
+interface IAccountsPropsType {
   accounts: string[];
 }
 
-const Accounts = ({ accounts }: IAccounts) => {
+const Accounts = ({ accounts }: IAccountsPropsType) => {
   return (
     <>
       <div>Accounts</div>
