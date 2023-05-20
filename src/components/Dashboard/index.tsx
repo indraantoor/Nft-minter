@@ -1,29 +1,29 @@
 'use-client';
 
 import { IAppContext, useAppContext } from '../../context/AppContext';
-import Accounts from '../Accounts/Accounts';
 import Balance from '../Balance';
-import Button from '../Button';
 import MintNftForm from '../MintNftForm';
+import MintedNfts from '../MintedNfts';
+import Navbar from '../Navbar';
 
 const Dashboard = () => {
-  const { connectWallet, logout, state } = useAppContext() as IAppContext;
-  const { isLoggedIn, allAddresses, address } = state;
+  const { state } = useAppContext() as IAppContext;
+  const { address, balance } = state;
 
   return (
     <>
-      <div>Home</div>
-      <div>Current Address: {address} </div>
-      <div>
-        <Balance balance={0} />
+      <div className="text-center">
+        <div className="mt-6">
+          <span className="mr-2 font-[700]">Address:</span>
+          <span className="font-[300]">{address}</span>
+        </div>
+        <div className="mt-3">
+          <Balance balance={balance} />
+        </div>
       </div>
-      {!isLoggedIn ? (
-        <Button text="Connect Wallet" onClick={connectWallet} />
-      ) : (
-        <Button text="Disconnect Wallet" onClick={logout} />
-      )}
-      <Accounts accounts={allAddresses} />
+
       <MintNftForm />
+      <MintedNfts />
     </>
   );
 };

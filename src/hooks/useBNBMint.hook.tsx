@@ -9,39 +9,26 @@ export interface IMetadata {
   description: string;
 }
 
+export interface IToken {
+  metadata?: IMetadata;
+  tokenId: number;
+  tokenURI: string;
+}
+
 export const useBNBMint = () => {
   const contract = useContract();
   const { state } = useAppContext() as IAppContext;
   const { address } = state;
 
   const getCount = async () => {
-    const count = await contract.count();
+    const count = await contract?.count();
     const parsedCount = parseInt(count);
     return parsedCount;
   };
 
   const getMintedStatus = async (tokenURI: IMetadata) => {
-    const isMinted = await contract.isContentOwned(tokenURI);
+    const isMinted = await contract?.isContentOwned(tokenURI);
     return isMinted;
-  };
-
-  const getTokens = async () => {
-    const balance = await contract.balanceOf(address);
-    const balanceFormatted = Number(balance);
-    const tokens = [];
-    for (let i = 0; i < balanceFormatted; i++) {
-      const tokenId = await contract.tokenOfOwnerByIndex(address, i);
-      const tokenURI = await contract.tokenURI(tokenId);
-      tokens.push({ tokenId: Number(tokenId), tokenURI });
-    }
-
-    tokens.forEach(async (token: any) => {
-      const metadataRes = await fetch(token.tokenURI.substring(7));
-      const metadata = await metadataRes.json();
-      token.metadata = metadata;
-    });
-
-    return tokens;
   };
 
   const mintNFT = async ({ url, name, description }: IMetadata) => {
@@ -70,7 +57,7 @@ export const useBNBMint = () => {
 
     const tokenURI = pinataResponse.pinataUrl;
 
-    const result = await contract.payToMint(address, tokenURI, {
+    const result = await contract?.payToMint(address, tokenURI, {
       value: ethers.utils.parseEther('0.005'),
     });
 
@@ -81,5 +68,5 @@ export const useBNBMint = () => {
     return tokenURI;
   };
 
-  return { getCount, getMintedStatus, mintNFT, getTokens };
+  return { getCount, getMintedStatus, mintNFT };
 };

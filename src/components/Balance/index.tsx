@@ -6,10 +6,10 @@ interface IBalancePropsType {
 const Balance = ({ balance = 0, currency = 'BNB' }: IBalancePropsType) => {
   return (
     <div>
-      <span>Balance: </span>
-      <span>
+      <span className="font-[700]">Balance: </span>
+      <span className="font-[300]">
         {balance}
-        {` ${currency}`}
+        <span className="mr-2 font-[600]">{` ${currency}`}</span>
       </span>
     </div>
   );
