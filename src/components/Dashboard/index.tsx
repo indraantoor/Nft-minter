@@ -2,6 +2,7 @@
 
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import Accounts from '../Accounts/Accounts';
+import Button from '../Button';
 
 const Dashboard = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
@@ -15,19 +16,9 @@ const Dashboard = () => {
       <div>Is Minted</div>
       <div>Balance: {balance ? balance + ' BNB' : ''}</div>
       {!isLoggedIn ? (
-        <button
-          className="rounded-full bg-gradient-to-r from-darkPink to-lightPink p-2 text-sm text-white"
-          onClick={() => connectWallet()}
-        >
-          Connect Wallet
-        </button>
+        <Button text="Connect Wallet" onClick={connectWallet} />
       ) : (
-        <button
-          className="rounded-full bg-gradient-to-r from-darkPink to-lightPink p-2 text-sm text-white"
-          onClick={() => logout()}
-        >
-          Disconnect Wallet
-        </button>
+        <Button text="Disconnect Wallet" onClick={logout} />
       )}
       <Accounts accounts={allAddresses} />
       <h2>Mint Form</h2>
