@@ -58,4 +58,8 @@ contract BNBMint is ERC721, ERC721URIStorage, Ownable {
 
     return newItemId;
   }
+
+  function count() public view returns (uint256) {
+    return _tokenIdCounter.current();
+  }
 }

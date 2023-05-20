@@ -1,16 +1,28 @@
 'use-client';
 
+import { useState } from 'react';
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import Accounts from '../Accounts/Accounts';
+import { useContract } from '../../hooks/useContract.hook';
 
 const Dashboard = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
   const { isLoggedIn, allAddresses, address, balance } = state;
+  const [totalMinted, setTotalMinted] = useState(0);
+
+  const contract = useContract();
+
+  const getCount = async () => {
+    const count = await contract.count();
+    const parsedCount = parseInt(count);
+    setTotalMinted(parsedCount);
+  };
 
   return (
     <>
       <div>Home</div>
       <div>Current Address: {address} </div>
+      <div onClick={() => getCount()}>Mint Count: {totalMinted}</div>
       <div>Balance: {balance ? balance + ' BNB' : ''}</div>
       {!isLoggedIn ? (
         <button
