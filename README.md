@@ -93,7 +93,7 @@ Add the target as
 
 Click OK.
 
-11. To start the application locally run in development mode run this
+11. To start the application locally and run in development mode run this
 
 ```
 npm run dev
