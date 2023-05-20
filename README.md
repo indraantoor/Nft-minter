@@ -93,19 +93,24 @@ Add the target as
 
 Click OK.
 
-11. To start the local development to run the application in development mode
+11. To start the application locally run in development mode run this
 
 ```
 npm run dev
 ```
 
+(Steps 12 and 13 are to check how it works and behaves when ran in production mode and would be used when we are deploying this application but for now Step 11 will help you run the application locally)
+
 12. To start the application in production environment
+
+First run
 
 ```
 npm run build
 ```
 
 13. To start application in production mode
+    Then to start the application run this. (To checkout how it works and behaves when ran in production mode)
 
 ```
 npm run start
