@@ -3,7 +3,7 @@
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import Accounts from '../Accounts/Accounts';
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
   const { isLoggedIn, allAddresses, address, balance } = state;
 
@@ -31,3 +31,5 @@ export const Dashboard = () => {
     </>
   );
 };
+
+export default Dashboard;

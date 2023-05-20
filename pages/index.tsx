@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { Dashboard } from '../src/components/Dashboard';
+import dynamic from 'next/dynamic';
+
+const Dashboard = dynamic(() => import('../src/components/Dashboard'), {
+  ssr: false,
+  loading: () => <h2>Loading...</h2>,
+});
 
 export default function Home() {
   return (
