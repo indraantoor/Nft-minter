@@ -3,15 +3,14 @@ import Button from '../Button';
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import { useMemo } from 'react';
 import ToastUtils from '../../utils/toast/toast.utils';
-
-const BSCTChainID = 97;
+import AppConstants from '../../utils/constants/app.constants';
 
 const Navbar = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
   const { isLoggedIn, currentChain } = state;
 
   const correctNetwork = useMemo(() => {
-    return currentChain === BSCTChainID;
+    return currentChain === AppConstants.BSCTChainID;
   }, [currentChain]);
 
   return (

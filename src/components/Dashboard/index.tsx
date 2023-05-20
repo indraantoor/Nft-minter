@@ -1,6 +1,7 @@
 'use-client';
 
 import { IAppContext, useAppContext } from '../../context/AppContext';
+import AppConstants from '../../utils/constants/app.constants';
 import LocalStorageUtils from '../../utils/storage/localStorage/localStorage.utls';
 import LocalStorageConstants from '../../utils/storage/localStorage/localStorageConstants';
 import Balance from '../Balance';
@@ -8,14 +9,12 @@ import MintNftForm from '../MintNftForm';
 import MintedNfts from '../MintedNfts';
 import { useMemo } from 'react';
 
-const BSCTChainID = 97;
-
 const Dashboard = () => {
   const { state } = useAppContext() as IAppContext;
   const { address, balance, isLoggedIn, currentChain } = state;
 
   const correctNetwork = useMemo(() => {
-    return currentChain === BSCTChainID;
+    return currentChain === AppConstants.BSCTChainID;
   }, [currentChain]);
 
   if (!correctNetwork) {
