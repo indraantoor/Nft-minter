@@ -6,6 +6,10 @@ import AppConstants from '../utils/constants/app.constants';
 
 const contractAddress = AppConstants.ContractAddress;
 
+/**
+    Custom hook for accessing the BNBMint contract instance.
+    @returns {Object} - The contract instance.
+**/
 export const useContract = () => {
   const { state } = useAppContext() as IAppContext;
   const { signer } = state;

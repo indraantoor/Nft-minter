@@ -3,6 +3,11 @@ interface IBalancePropsType {
   currency?: string;
 }
 
+/**
+    Balance Component
+    A component that displays the balance amount.
+**/
+
 const Balance = ({ balance = 0, currency = 'BNB' }: IBalancePropsType) => {
   return (
     <div>

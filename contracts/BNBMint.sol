@@ -1,3 +1,9 @@
+/**
+    @title BNBMint
+    @dev A contract for minting and managing ERC721 tokens on the Binance Smart Chain.
+    @dev It extends ERC721, ERC721Enumerable, ERC721URIStorage, and Ownable contracts from OpenZeppelin.
+**/
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
@@ -20,6 +26,11 @@ contract BNBMint is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     return 'ipfs://';
   }
 
+  /**
+    @dev Mints a new token with the given URI and assigns it to the specified address.
+    @param to The address to assign the newly minted token to.
+    @param uri The URI of the token metadata.
+  **/
   function safeMint(address to, string memory uri) public onlyOwner {
     uint256 tokenId = _tokenIdCounter.current();
     _tokenIdCounter.increment();
@@ -58,6 +69,12 @@ contract BNBMint is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     return existingURIs[uri] == 1;
   }
 
+  /** 
+    @dev Allows users to pay to mint a new token with the given metadata URI.
+    @param recipient The address to assign the newly minted token to.
+    @param metadataURI The URI of the token metadata.
+    @return The ID of the newly minted token.
+  **/
   function payToMint(
     address recipient,
     string memory metadataURI

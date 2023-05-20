@@ -15,6 +15,10 @@ export interface IWalletState {
   balance: string;
 }
 
+/**
+    Custom hook for managing wallet connection and state.
+    @returns {Object} - Wallet related functions and state.
+**/
 export const useWallet = () => {
   const initialState = {
     address: '',
@@ -28,6 +32,11 @@ export const useWallet = () => {
 
   const [walletState, setWalletState] = useState<IWalletState>(initialState);
 
+  /**
+    Connects or disconnects the wallet.
+    @param {boolean} isLoggedIn - Indicates if the user is already logged in.
+    @param {IWalletState} walletStateParam - The current wallet state.
+  **/
   const connectWallet = useCallback(
     async (
       isLoggedIn = walletState.isLoggedIn,
@@ -43,6 +52,7 @@ export const useWallet = () => {
     [walletState]
   );
 
+  // Logs out the user by resetting the wallet state and removing the login status from local storage.
   const logout = () => {
     setWalletState(initialState);
     LocalStorageUtils.removeFromLocalStorage(
@@ -50,6 +60,10 @@ export const useWallet = () => {
     );
   };
 
+  /**
+    Updates the wallet state.
+    @param {IWalletState} walletState - The new wallet state.
+  **/
   const updateWalletState = (walletState: IWalletState) => {
     setWalletState(walletState);
     return;

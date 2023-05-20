@@ -5,10 +5,16 @@ import { useMemo } from 'react';
 import ToastUtils from '../../utils/toast/toast.utils';
 import AppConstants from '../../utils/constants/app.constants';
 
+/**
+    Navbar Component
+    A component that displays the navigation bar with wallet connection/logout button.
+**/
+
 const Navbar = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
   const { isLoggedIn, currentChain } = state;
 
+  // Check if the current network is the correct network
   const correctNetwork = useMemo(() => {
     return currentChain === AppConstants.BSCTChainID;
   }, [currentChain]);

@@ -9,6 +9,11 @@ import MintNftForm from '../MintNftForm';
 import MintedNfts from '../MintedNfts';
 import { useMemo } from 'react';
 
+/**
+    Dashboard Component
+    A component that displays the dashboard of the NFT Minter application.
+**/
+
 const Dashboard = () => {
   const { state } = useAppContext() as IAppContext;
   const { address, balance, isLoggedIn, currentChain } = state;

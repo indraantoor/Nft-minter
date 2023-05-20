@@ -1,8 +1,15 @@
 import axios from 'axios';
-const key = process.env.NEXT_PUBLIC_PINATA_KEY;
-const secret = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY;
+import AppConstants from './constants/app.constants';
+
+/**
+    Pins a JSON object to IPFS using the Pinata API.
+    @param {any} JSONBody - The JSON object to be pinned.
+    @returns {Promise<{ success: boolean, pinataUrl: string } | { success: boolean, message: string }>} - A promise that resolves to an object with success and pinataUrl properties if successful, or success and message properties if an error occurs.
+**/
 
 export const pinJSONToIPFS = async (JSONBody: any) => {
+  const key = AppConstants.PINATA_KEY;
+  const secret = AppConstants.PINATA_SECRET_KEY;
   const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
   //making axios POST request to Pinata
   return axios

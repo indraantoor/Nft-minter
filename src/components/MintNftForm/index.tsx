@@ -2,6 +2,11 @@ import { useState } from 'react';
 import Button from '../Button';
 import { IMetadata, useBNBMint } from '../../hooks/useBNBMint.hook';
 
+/**
+    MintNftForm Component
+    A form component for minting NFTs.
+**/
+
 const MintNftForm = () => {
   const [nftFormValues, setNftFormValues] = useState<IMetadata>({
     url: '',

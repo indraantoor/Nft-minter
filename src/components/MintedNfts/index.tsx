@@ -4,6 +4,11 @@ import { useContract } from '../../hooks/useContract.hook';
 import { IAppContext, useAppContext } from '../../context/AppContext';
 import ToastUtils from '../../utils/toast/toast.utils';
 
+/**
+    MintedNfts Component
+    A component that displays the minted NFT tokens.
+**/
+
 const MintedNfts = () => {
   const [mintedNfts, setMintedNfts] = useState<IToken[]>([]);
 

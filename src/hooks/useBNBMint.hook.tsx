@@ -16,11 +16,20 @@ export interface IToken {
   tokenURI: string;
 }
 
+/**
+    Custom hook for interacting with the BNBMint contract and performing minting operations.
+    @returns {Object} - An object containing various functions related to the BNBMint contract.
+**/
+
 export const useBNBMint = () => {
   const contract = useContract();
   const { state } = useAppContext() as IAppContext;
   const { address } = state;
 
+  /**
+    Retrieves the count of minted NFTs from the contract.
+    @returns {Promise<number | undefined>} - A promise that resolves to the count of minted NFTs, or undefined if an error occurs.
+  **/
   const getCount = async () => {
     try {
       const count = await contract?.count();
@@ -34,6 +43,11 @@ export const useBNBMint = () => {
     }
   };
 
+  /**
+    Retrieves the minted status of an NFT with the given tokenURI from the contract.
+    @param {IMetadata} tokenURI - The tokenURI of the NFT.
+    @returns {Promise<boolean | undefined>} - A promise that resolves to the minted status of the NFT, or undefined if an error occurs.
+  **/
   const getMintedStatus = async (tokenURI: IMetadata) => {
     try {
       const isMinted = await contract?.isContentOwned(tokenURI);
@@ -46,6 +60,11 @@ export const useBNBMint = () => {
     }
   };
 
+  /**
+    Mints an NFT with the provided metadata.
+    @param {IMetadata} metadata - The metadata of the NFT.
+    @returns {Promise<string | undefined>} - A promise that resolves to the tokenURI of the minted NFT, or undefined if an error occurs.
+  **/
   const mintNFT = async ({ url, name, description }: IMetadata) => {
     //error handling
     if (url.trim() == '' || name.trim() == '' || description.trim() == '') {
