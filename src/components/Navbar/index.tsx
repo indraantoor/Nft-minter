@@ -1,10 +1,18 @@
 import React from 'react';
 import Button from '../Button';
 import { IAppContext, useAppContext } from '../../context/AppContext';
+import { useMemo } from 'react';
+import ToastUtils from '../../utils/toast/toast.utils';
+
+const BSCTChainID = 97;
 
 const Navbar = () => {
   const { connectWallet, logout, state } = useAppContext() as IAppContext;
-  const { isLoggedIn } = state;
+  const { isLoggedIn, currentChain } = state;
+
+  const correctNetwork = useMemo(() => {
+    return currentChain === BSCTChainID;
+  }, [currentChain]);
 
   return (
     <nav className="bg-gray-800">
@@ -16,7 +24,18 @@ const Navbar = () => {
 
           <div className="flex items-center">
             {!isLoggedIn ? (
-              <Button text="Connect Wallet" onClick={connectWallet} />
+              <Button
+                text="Connect Wallet"
+                onClick={() => {
+                  if (!correctNetwork) {
+                    ToastUtils.showErrorToast(
+                      'Make sure you are connected to right network'
+                    );
+                    return;
+                  }
+                  connectWallet();
+                }}
+              />
             ) : (
               <Button text="Disconnect Wallet" onClick={logout} />
             )}
