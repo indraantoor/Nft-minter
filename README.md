@@ -163,17 +163,33 @@ In case you are not able to immediately see the updated NFTS please reload the p
 In case you are not able see your minted NFTS it is because PINATA starts to give CORS Error if we request to often. So wait for few minutes and then try again.
 ```
 
+### Home Page
+
 <img src="https://i.ibb.co/J5W6521/1.png" alt="1" border="0" />
 
-<img src="https://i.ibb.co/xDGmT9w/2.png" alt="2" border="0" />
+### Connect Wallet
 
 <img src="https://i.ibb.co/kyZBXjv/3.png" alt="3" border="0" />
 
+### Dashboard
+
+<img src="https://i.ibb.co/xDGmT9w/2.png" alt="2" border="0" />
+
+### Filling metadata
+
 <img src="https://i.ibb.co/s9B0kQk/4.png" alt="4" border="0" />
+
+### Start the transaction
 
 <img src="https://i.ibb.co/4m9Kdm9/5.png" alt="5" border="0" />
 
+### Transaction Success and updated details are shown below after some time
+
 <img src="https://i.ibb.co/8NnGtnZ/6.png" alt="6" border="0" />
+
+### When connected to a different network
+
+<img src="https://i.ibb.co/5BN1CqP/7.png" alt="7" border="0" />
 
 ## 4. Troubleshooting
 
