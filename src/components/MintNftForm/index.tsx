@@ -31,7 +31,7 @@ const MintNftForm = () => {
             Link to asset:
           </label>
           <input
-            type="text"
+            type="url"
             placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
             value={nftFormValues.url}
             onChange={(event) =>
