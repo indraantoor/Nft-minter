@@ -32,7 +32,7 @@ const Navbar = () => {
               <Button
                 text="Connect Wallet"
                 onClick={() => {
-                  if (!correctNetwork) {
+                  if (currentChain && !correctNetwork) {
                     ToastUtils.showErrorToast(
                       'Make sure you are connected to right network'
                     );

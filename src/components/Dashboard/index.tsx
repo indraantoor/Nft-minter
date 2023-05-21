@@ -22,7 +22,7 @@ const Dashboard = () => {
     return currentChain === AppConstants.BSCTChainID;
   }, [currentChain]);
 
-  if (!correctNetwork) {
+  if (currentChain && !correctNetwork) {
     LocalStorageUtils.removeFromLocalStorage(
       LocalStorageConstants.IS_LOGGED_IN
     );
