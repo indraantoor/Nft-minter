@@ -1,6 +1,95 @@
 # Next.js NFT Minting Application
 
-This guide will walk you through the installation, setup, and usage of the application, which allows users to mint NFTs on the Binance Smart Chain Testnet. Please follow the instructions below to get started.
+<center>
+<img src="https://i.ibb.co/4m9Kdm9/5.png" alt="5" border="0" />
+</center>
+
+## Overview
+
+Welcome to the BSC NFT Minting App – your gateway to creating and minting unique digital assets on the Binance Smart Chain Testnet. This innovative application harnesses the power of Solidity, Ethers, Hardhat, and Metamask to bring the world of non-fungible tokens (NFTs) to the decentralized realm of Binance Smart Chain.
+
+**Empower Your Creativity:** Express your creativity by minting your own NFTs. Showcase your digital art, collectibles, and more in the exciting world of blockchain-powered digital ownership.
+
+**Effortless Minting:** With a user-friendly interface and robust tools, minting NFTs has never been easier. Thanks to the integration of Solidity, Ethers, and Hardhat, you'll experience seamless and secure NFT creation.
+
+**Binance Smart Chain Integration:** Leverage the speed and low fees of the Binance Smart Chain Testnet. Minting NFTs becomes not only engaging but also cost-effective, making it perfect for artists, developers, and enthusiasts alike.
+
+## Key Features
+
+- **Solidity-Powered:** Our application is built on the powerful Solidity language, ensuring compatibility and security for your NFTs.
+
+- **Ethers and Hardhat:** Utilize Ethers.js and Hardhat for smooth interactions with the Binance Smart Chain, making minting a breeze.
+
+- **Metamask Integration:** Seamlessly connect your Metamask wallet to interact with the app and mint your NFTs with just a few clicks.
+
+- **BSC Testnet:** Mint on the Binance Smart Chain Testnet first to ensure your creations are perfect before diving into the mainnet.
+
+- **User-Friendly UI:** Our intuitive user interface guides you through the minting process step by step, even if you're new to blockchain development.
+
+## Technologies Used
+
+- **Next.js:** A popular React framework for building server-rendered and static websites.
+- **Chainlink Contracts:** A library for interacting with Chainlink oracle contracts.
+- **Hardhat Toolbox:** A set of helpful tools and plugins for the Hardhat Ethereum development environment.
+- **TypeScript:** A statically typed superset of JavaScript, used for strong type-checking.
+- **Axios:** A promise-based HTTP client for making API requests.
+- **React:** A JavaScript library for building user interfaces.
+- **React DOM:** A package for managing React components in the DOM.
+- **React Toastify:** A library for adding toast notifications to React applications.
+- **Ethers:** A library for interacting with Ethereum smart contracts and decentralized applications.
+- **Tailwind CSS:** A utility-first CSS framework for building custom designs with minimal styles.
+- **Solidity Coverage:** A tool for generating code coverage reports for Solidity smart contracts.
+- **Etherscan:** A Hardhat plugin for verifying and deploying contracts on the Ethereum blockchain.
+- **Hardhat:** A development environment for Ethereum that helps you write, test, and deploy smart contracts.
+- **Husky:** A tool for adding pre-commit hooks and other Git hooks.
+- **Prettier:** A code formatting tool to maintain consistent code style.
+- **Eslint:** A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- **Next.js Eslint:** Eslint configuration for Next.js projects.
+- **Typechain:** A TypeScript bindings generator for Ethereum smart contracts.
+- **TypeScript Chai Matchers:** Chai matchers for asserting Ethereum contract state.
+- **Typechain Hardhat Plugin:** A Hardhat plugin for generating TypeScript bindings.
+- **Ethertypes-v5:** Typechain plugin for generating TypeScript bindings for ethers-v5.
+- **TypeScript Chai Matchers:** Chai matchers for asserting Ethereum contract state.
+- **TypeScript Mocha:** TypeScript typings for Mocha, a JavaScript test framework.
+- **Cross-Env:** A tool for setting environment variables cross-platform.
+- **Env-cmd:** A tool for executing commands using environment-specific variables.
+- **Autoprefixer:** A PostCSS plugin to parse CSS and add vendor prefixes.
+- **PostCSS:** A tool for transforming styles with JavaScript plugins.
+- **Commitlint:** A tool for linting commit messages based on conventional commits.
+- **Hardhat Network Helpers:** Hardhat plugin for managing accounts and network configuration.
+- **Next.js Prettier:** Prettier configuration for Next.js projects.
+- **Next.js TailwindCSS:** Integration of Tailwind CSS with Next.js projects.
+- **TypeScript TailwindCSS:** Integration of Tailwind CSS with TypeScript projects.
+
+
+### Home Page
+
+<img src="https://i.ibb.co/J5W6521/1.png" alt="1" border="0" />
+
+### Connect Wallet
+
+<img src="https://i.ibb.co/kyZBXjv/3.png" alt="3" border="0" />
+
+### Dashboard
+
+<img src="https://i.ibb.co/xDGmT9w/2.png" alt="2" border="0" />
+
+### Filling metadata
+
+<img src="https://i.ibb.co/s9B0kQk/4.png" alt="4" border="0" />
+
+### Start the transaction
+
+<img src="https://i.ibb.co/4m9Kdm9/5.png" alt="5" border="0" />
+
+### Transaction Success and updated details are shown below after some time
+
+<img src="https://i.ibb.co/8NnGtnZ/6.png" alt="6" border="0" />
+
+### When connected to a different network
+
+<img src="https://i.ibb.co/5BN1CqP/7.png" alt="7" border="0" />
+
 
 ## Table of Contents
 
@@ -12,6 +101,8 @@ This guide will walk you through the installation, setup, and usage of the appli
    - 3.3 [Viewing Minted NFTs](#viewing-minted-nfts)
 4. [Troubleshooting](#troubleshooting)
 5. [FAQ](#faq)
+
+This guide will walk you through the installation, setup, and usage of the application, which allows users to mint NFTs on the Binance Smart Chain Testnet. Please follow the instructions below to get started.
 
 ## 1. Installation
 
@@ -163,38 +254,9 @@ To view the NFTs you have minted from your connected wallet, follow these steps:
 ```
 In case you are not able to immediately see the updated NFTS please reload the page.
 ```
-
 ```
 In case you are not able see your minted NFTS it is because PINATA starts to give CORS Error if we request to often. So wait for few minutes and then try again.
 ```
-
-### Home Page
-
-<img src="https://i.ibb.co/J5W6521/1.png" alt="1" border="0" />
-
-### Connect Wallet
-
-<img src="https://i.ibb.co/kyZBXjv/3.png" alt="3" border="0" />
-
-### Dashboard
-
-<img src="https://i.ibb.co/xDGmT9w/2.png" alt="2" border="0" />
-
-### Filling metadata
-
-<img src="https://i.ibb.co/s9B0kQk/4.png" alt="4" border="0" />
-
-### Start the transaction
-
-<img src="https://i.ibb.co/4m9Kdm9/5.png" alt="5" border="0" />
-
-### Transaction Success and updated details are shown below after some time
-
-<img src="https://i.ibb.co/8NnGtnZ/6.png" alt="6" border="0" />
-
-### When connected to a different network
-
-<img src="https://i.ibb.co/5BN1CqP/7.png" alt="7" border="0" />
 
 ## 4. Troubleshooting
 
